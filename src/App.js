@@ -1,26 +1,50 @@
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
+import HelloWord from "./Components/HelloWord";
+import CounterExample from "./Components/CounterExample";
+import Header from "./Components/Header";
+import{
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+} from "react-router-dom";
+import Home from "./Views/Home";
+import About from "./Views/About"; 
+import Contact from "./Views/Contact"; 
+import Product from './Views/Product'
+import Footer from "./Components/Footer";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          changes made
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="fondo-pagina">
+      <Router>
+      <Header />
+        <Routes>
+          <Route path="/about" element={
+            <>
+              <About/>
+            </>
+          } />
+          <Route path="/" element={
+            <>
+              <Home/>
+            </>
+          } />
+          <Route path="/contact" element={
+            <>
+              <Contact/>
+            </>
+          } />
+          <Route path="/products/:id" element={
+            <>
+              <Product/>
+            </>
+          } />
+        </Routes>
+
+         <Footer />
+      </Router>
     </div>
   );
 }
